@@ -19,8 +19,6 @@ function App() {
 
   let routes
 
-  console.log(process.env.REACT_APP_BACKEND_URL)
-
   if (authCtx.isAuth) {
     routes = (
       <Switch>
