@@ -17,7 +17,10 @@ function UserItem({ id, name, image, placeCount }) {
       <Card>
         <UserLink to={`/${id}/places`}>
           <UserImage>
-            <Avatar image={`http://localhost:5000/${image}`} alt={name} />
+            <Avatar
+              image={process.env.REACT_APP_ASSET_URL + `/${image}`}
+              alt={name}
+            />
           </UserImage>
           <UserInfo>
             <UserName>{name}</UserName>

@@ -1,21 +1,25 @@
-import React, { useContext } from 'react'
+import React, { useContext, Suspense } from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 
 import Navbar from './components/navigation/Navbar'
 import GlobalStyle from './globalStyles'
-import Auth from './pages/Auth'
-import NewPlace from './pages/NewPlace'
-import UpdatePlace from './pages/UpdatePlace'
-import UserPlaces from './pages/UserPlaces'
-import Users from './pages/Users'
-import Homepage from './pages/Homepage'
 
 import { AuthContext } from './context/AuthContext.js'
+import LoadingSpinner from './components/ui/LoadingSpinner'
+
+const Users = React.lazy(() => import('./pages/Users'))
+const Auth = React.lazy(() => import('./pages/Auth'))
+const NewPlace = React.lazy(() => import('./pages/NewPlace'))
+const UpdatePlace = React.lazy(() => import('./pages/UpdatePlace'))
+const UserPlaces = React.lazy(() => import('./pages/UserPlaces'))
+const Homepage = React.lazy(() => import('./pages/Homepage'))
 
 function App() {
   const authCtx = useContext(AuthContext)
 
   let routes
+
+  console.log(process.env.REACT_APP_BACKEND_URL)
 
   if (authCtx.isAuth) {
     routes = (
@@ -43,7 +47,9 @@ function App() {
     <>
       <GlobalStyle />
       <Navbar />
-      <main>{routes}</main>
+      <main>
+        <Suspense fallback={<LoadingSpinner />}>{routes}</Suspense>
+      </main>
     </>
   )
 }
