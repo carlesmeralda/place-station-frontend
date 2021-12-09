@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { GiDrippingGoo } from 'react-icons/gi'
 
 export const Nav = styled.nav`
-  background: #101522;
+  background: #144569;
   height: 80px;
   display: flex;
   justify-content: center;

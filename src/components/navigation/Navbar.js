@@ -25,9 +25,9 @@ function Navbar() {
   return (
     <Nav>
       <NavContainer>
-        <NavLogo to="/home">
+        <NavLogo to="/">
           <NavIcon />
-          MernApp
+          Place Station
         </NavLogo>
         <MobileIcon onClick={clickHandler}>
           {click ? <FaTimes /> : <FaBars />}

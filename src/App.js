@@ -12,7 +12,6 @@ const Auth = React.lazy(() => import('./pages/Auth'))
 const NewPlace = React.lazy(() => import('./pages/NewPlace'))
 const UpdatePlace = React.lazy(() => import('./pages/UpdatePlace'))
 const UserPlaces = React.lazy(() => import('./pages/UserPlaces'))
-const Homepage = React.lazy(() => import('./pages/Homepage'))
 
 function App() {
   const authCtx = useContext(AuthContext)
@@ -22,7 +21,6 @@ function App() {
   if (authCtx.isAuth) {
     routes = (
       <Switch>
-        <Route path="/home" exact component={Homepage} />
         <Route path="/" exact component={Users} />
         <Route path="/:userId/places" exact component={UserPlaces} />
         <Route path="/places/new" exact component={NewPlace} />
@@ -32,7 +30,6 @@ function App() {
   } else {
     routes = (
       <Switch>
-        <Route path="/home" exact component={Homepage} />
         <Route path="/" exact component={Users} />
         <Route path="/:userId/places" exact component={UserPlaces} />
         <Route path="/auth" exact component={Auth} />
